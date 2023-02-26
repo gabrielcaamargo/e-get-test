@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeContext } from '../../contexts/ThemeContext';
 
 import { Provider } from 'react-redux';
-import ReposStore from '../../redux/repos/ReposStore';
 
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../../assets/styles/GlobalStyles';
@@ -14,6 +13,7 @@ import lightTheme from '../../assets/styles/themes/lightTheme';
 import Router from '../../routes';
 import Header from '../Header';
 import UserStore from '../../redux/user/UserStore';
+import { Container } from './styles';
 
 export default function App() {
   const [theme, setTheme] = useState('dark');
@@ -35,10 +35,12 @@ export default function App() {
       <ThemeProvider theme={currentTheme === 'dark' ? darkTheme : lightTheme}>
         <GlobalStyles />
         <ThemeContext.Provider value={{ theme, setTheme }}>
-          <Header toggleTheme={handleToggleTheme} />
-          <Provider store={UserStore}>
-            <Router />
-          </Provider>
+          <Container>
+            <Header toggleTheme={handleToggleTheme} />
+            <Provider store={UserStore}>
+              <Router />
+            </Provider>
+          </Container>
         </ThemeContext.Provider>
       </ThemeProvider>
     </BrowserRouter>

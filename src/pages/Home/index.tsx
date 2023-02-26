@@ -9,18 +9,28 @@ export default function Home() {
 
   useEffect(() => {
     if(isFirstRender.current) {
-      toast.success('Welcome!');
+      setTimeout(() => {
+        toast.success('Welcome!', {
+          position: 'top-right'
+        });
+      }, 700);
       isFirstRender.current = false;
       return;
     }
 
-    toast.success('Welcome back!');
+    setTimeout(() => {
+      toast.success('Welcome back!', {
+        position: 'top-right'
+      });
+    }, 700);
   }, []);
 
   return (
     <Container>
       <Search />
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+      />
     </Container>
   );
 }

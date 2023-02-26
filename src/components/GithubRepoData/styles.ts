@@ -19,6 +19,20 @@ export const Container = styled.div`
       margin-top: 12px;
     }
   }
+
+  @keyframes showUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  animation: showUp 0.5s ease-in 1;
 `;
 
 export const Title = styled.strong`

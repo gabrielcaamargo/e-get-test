@@ -27,7 +27,9 @@ export default function Search() {
         .then(response => response.json())
         .then(response => {
           if(response.message === 'Not Found') {
-            toast.error('User not found');
+            toast.error('User not found', {
+              position: 'top-right'
+            });
             setHasUser(false);
             return;
           }
@@ -65,7 +67,9 @@ export default function Search() {
         </div>
         <button type='submit'>Search</button>
       </Form>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+      />
 
       {hasUser && (
         <GithubUserData
