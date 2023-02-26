@@ -3,6 +3,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { ThemeContext } from '../../contexts/ThemeContext';
 
+import { Provider } from 'react-redux';
+import ReposStore from '../../redux/repos/ReposStore';
+
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../../assets/styles/GlobalStyles';
 import darkTheme from '../../assets/styles/themes/darkTheme';
@@ -10,6 +13,7 @@ import lightTheme from '../../assets/styles/themes/lightTheme';
 
 import Router from '../../routes';
 import Header from '../Header';
+import UserStore from '../../redux/user/UserStore';
 
 export default function App() {
   const [theme, setTheme] = useState('dark');
@@ -20,7 +24,6 @@ export default function App() {
       localStorage.setItem('theme', themeChanged);
       return themeChanged;
     });
-    console.log('Rodou');
   }
 
   const currentTheme = useMemo(() => {
@@ -33,7 +36,9 @@ export default function App() {
         <GlobalStyles />
         <ThemeContext.Provider value={{ theme, setTheme }}>
           <Header toggleTheme={handleToggleTheme} />
-          <Router />
+          <Provider store={UserStore}>
+            <Router />
+          </Provider>
         </ThemeContext.Provider>
       </ThemeProvider>
     </BrowserRouter>

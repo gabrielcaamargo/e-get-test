@@ -14,6 +14,10 @@ export default createGlobalStyle`
     margin: auto;
     background-color: ${({theme}) => theme.background};
     color: ${({theme}) => theme.textColor};
+
+    @media screen and (max-width: 720px) {
+      width: 90vw;
+    }
   }
 
   button {

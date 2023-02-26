@@ -1,4 +1,3 @@
-import { ThemeContext } from '../../contexts/ThemeContext';
 import { Container, ThemeSwitcher, Title } from './styles';
 
 import Sun from '../../assets/images/sun.png';
