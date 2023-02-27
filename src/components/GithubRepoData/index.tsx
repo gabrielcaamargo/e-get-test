@@ -18,10 +18,12 @@ export default function GithubRepoData({description, language, created_at, full_
       </header>
 
       <RepoInfo>
-        <li>
-          <strong>Language:</strong>
-          <span>{language}</span>
-        </li>
+        {language && (
+          <li>
+            <strong>Language:</strong>
+            <span>{language}</span>
+          </li>
+        )}
 
         <li title='Repo created at'>
           <AiOutlineStar size={24} color='#FFF' />
