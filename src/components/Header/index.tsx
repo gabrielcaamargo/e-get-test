@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 export default function Header({toggleTheme}:HeaderProps) {
-  const theme = localStorage.getItem('theme');
+  const theme = localStorage.getItem('theme') || 'dark';
   return (
     <Container>
       <ThemeSwitcher onClick={toggleTheme}>
